@@ -1,28 +1,20 @@
 <?php
 
 require './controllers/items_controller.php';
-require './models/item.php';
-// require './views/items/index.json.php';
-// require './views/items/index.xml.php';
 
-/* echo "@TODO switch controller#action by url"; */
+/* echo "PATH_INFO: " . $_SERVER['PATH_INFO'] . "<br/>"; */
 
-var_dump($_SERVER['PATH_INFO']);
-
-/*
 switch ($_SERVER['PATH_INFO']) {
-  case '/items':
+  case '/api/v1/items':
     $controller = new ItemsController();
-    $response = $controller->index($_GET, $format);
+    $controller->index($_GET);
     break;
   
-  case '/item':
-    $response = $api_server->getItemDetail($_GET, $format);
+  case '/api/v1/item':
+    $controller = new ItemsController();
+    $controller->show($_GET);
     break;
   
   default:
-    //404 Not Found
-    $response = $api_server->render404Response($format);
     break;
 }
- */

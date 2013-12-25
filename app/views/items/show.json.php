@@ -3,5 +3,5 @@
 ?>
 {
   "action": "<?php echo $action_name; ?>",
-  "word":   "<?php echo $item->hello(); ?>"
+  "word":   "<?php echo $item->moe(); ?>"
 }
