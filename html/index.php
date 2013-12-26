@@ -1,10 +1,10 @@
 <?php
 
-require './controllers/items_controller.php';
+require '../app/controllers/items_controller.php';
 
-/* echo "PATH_INFO: " . $_SERVER['PATH_INFO'] . "<br/>"; */
+//echo $_SERVER['REQUEST_URI'];
 
-switch ($_SERVER['PATH_INFO']) {
+switch ($_SERVER['REQUEST_URI']) {
   case '/api/v1/items':
     $controller = new ItemsController();
     $controller->index($_GET);

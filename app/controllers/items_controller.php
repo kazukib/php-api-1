@@ -1,6 +1,6 @@
 <?php
 
-require './models/item.php';
+require '../app/models/item.php';
 
 class ItemsController {
 
@@ -15,7 +15,7 @@ class ItemsController {
     $item = new Item();
     $word = $item->hello();
 
-    require './views/items/index.json.php';
+    require '../app/views/items/index.json.php';
   }
 
   /**
@@ -29,6 +29,6 @@ class ItemsController {
     $item = new Item();
     $word = $item->hello();
 
-    require './views/items/show.json.php';
+    require '../app/views/items/show.json.php';
   }
 }
