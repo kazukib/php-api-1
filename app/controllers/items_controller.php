@@ -1,34 +1,18 @@
 <?php
 
-require '../app/models/item.php';
+require_once(dirname(__FILE__) . "/./../controllers/request.php");
+require_once(dirname(__FILE__) . "/./../views/items.json.php");
+require_once(dirname(__FILE__) . "/./../views/items.xml.php");
 
-class ItemsController {
-
-  /**
-   * GET /items
-   *
-   */
-  public function index($params) {
-    $action_name = 'index';
-    /* echo "ItemsController#show is called<br/>"; */
-
-    $item = new Item();
-    $word = $item->hello();
-
-    require '../app/views/items/index.json.php';
-  }
-
-  /**
-   * GET /items/#{id}
-   *
-   */
-  public function show($params) {
-    $action_name = 'show';
-    /* echo "ItemsController#show is called<br/>"; */
-
-    $item = new Item();
-    $word = $item->hello();
-
-    require '../app/views/items/show.json.php';
-  }
+class Itemscontroller{
+    public function __construct(){
+	$path = new Request();
+	$path_r = $path->getPathInfo();
+	if(strstr($path_r, 'xml')){
+	    $format = new Itemsxml();
+	}else{
+	    $format = new Itemsjson();
+        }
+	return $format;
+    }
 }
