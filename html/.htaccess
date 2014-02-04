@@ -1,12 +1,8 @@
-<IfModule mod_rewrite.c>
-    AcceptPathInfo On
-    RewriteEngine On
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteCond %{REQUEST_FILENAME} !-d
-#    RewriteRule ^(.*)$ index.php [QSA,L]
-    RewriteBase /
-    RewriteRule api/v1/(.*) index.php/$1
+AcceptPathInfo On
+RewriteEngine On
+RewriteBase /
+RewriteRule api/v1/(.*) index.php/$1
 
-    ErrorDocument 404 /404.html
-</IfModule>
+ErrorDocument 404 /404.html
 
+php_flag display_errors On
