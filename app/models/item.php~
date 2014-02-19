@@ -4,12 +4,12 @@ class Item
     /**
     * 実行メソッド
     * @param   string  $order ソートするかどうか
-    * @return  string
+    * @return  string  
     * @author  KazukiBaba
     */
 
-static public function getdata($order){
-
+    public static function getdata($order){
+	   
         $dsn = 'mysql:dbname=items;host=127.0.0.1';
         $user = 'root';
         $password = 'root';
@@ -20,9 +20,10 @@ static public function getdata($order){
         echo 'Connection failed: ' . $e->getMessage();
         }
 
-        try{
+//        try{    
             if (preg_match('/[0-9]+/', $order)){
-	        $sql = "SELECT id,price FROM item_info where id = $order";
+	        $sql = "SELECT id,price FROM mitems where id = $order";
+	    }
 	    }else{
 	        switch ($order){
 	        case 'price_desc':
@@ -38,16 +39,17 @@ static public function getdata($order){
 		    $sql ="SELECT id,price FROM item_info ORDER BY id";
 		    break;
 	        }
-           }
+           }  
         $result = array();
-        foreach ($dbh->query($sql) as $row) {
+$row = $dbh->query($sql);
+ //       foreach ($dbh->query($sql) as $row) {
             $result[] = array('id' => $row['id'], 'price' => $row['price']);
-	}
-        }catch (PDOException $e){
+//	}
+/*        }catch (PDOException $e){
         print('Error:'.$e->getMessage());
         die();
         }
-        return $result;
+ */        return $result;
     }
 }
-
+       	
